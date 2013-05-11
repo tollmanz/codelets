@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Cherry Picking a Range of Commits with Git</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Web fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Zack's Codelets</a></h1>
+              <a class="extra" href="http://tollmanz.com">tollmanz.com</a>
+              <a class="extra" href="/about">About</a>
+            </div>
+     
+                <h2>Cherry Picking a Range of Commits with Git</h2>
+<p class="meta">11 May 2013</p>
+
+<div id="post">
+<p>Git has many methods for merging branchs, including the very unsophisticated <a href='https://www.kernel.org/pub/software/scm/git/docs/git-cherry-pick.html'>cherry pick</a> method. Its primary purpose it to copy individual commits from one branch to another.</p>
+
+<p>Cherry picking a range of commits is not too difficult, but it does come with a strange syntax that I often forget. The basic form of cherry picking a range of commits is:</p>
+<div class='highlight'><pre><code class='bash'>git cherry-pick ebe6942..905e279
+</code></pre></div>
+<p>The oldest commit in the range is the oldest commit and the last commit in the range is the newest commit. The confusion with this form of the cherry pick merge is that the first commit object listed in the range is not included in the commit. The last commit object is included. I find it difficult to keep track of which commit object is included and which is not.</p>
+
+<p>As a result, my preferred syntax for including a range of commits in a cherry pick that is inclusive of both range endpoints is:</p>
+<div class='highlight'><pre><code class='bash'>git cherry-pick ebe6942^..905e279
+</code></pre></div>
+<p>This syntax will include the first commit object. This inclusion is what I assume the range commit will do by default and I often get tripped up and confused by it.</p>
+
+<p>Reference:</p>
+
+<p><a href='http://stackoverflow.com/questions/1994463/how-to-cherry-pick-a-range-of-commits-and-merge-into-another-branch'>Stackoverflow: How to cherry pick a range of commits and merge into another branch</a></p>
+</div>
+
+
+            <div class="footer">
+              <div class="contact">
+                <p>
+                  Zack Tollman<br />
+                  Developer, The Theme Foundry<br />
+                </p>
+              </div>
+              <div class="contact">
+                <p>
+                  <a href="http://github.com/tollmanz/">Github</a><br />
+                  <a href="http://twitter.com/tollmanz/">@tollmanz</a><br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>
